@@ -122,7 +122,7 @@ let username: string = "Alexandra";
 
 let pageName: string | number = "1";
 
-//you can create class to implement interface in typescript
+//you can create class to implement interface or type in typescript
 //for example like this
 
 //interface User {
@@ -136,3 +136,11 @@ let pageName: string | number = "1";
 //     surname: "G";
 //      email: "g@g.com";
 // }
+
+//we could use type as clarity of our code like:
+type PopularTag = string;
+type MaybePopularTag = PopularTag | null;
+
+const popularTag: PopularTag[] = ["dragon", "coffee", "pizza"];
+
+const dragonsTag: MaybePopularTag = null;
