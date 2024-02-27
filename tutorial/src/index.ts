@@ -138,9 +138,21 @@ let pageName: string | number = "1";
 // }
 
 //we could use type as clarity of our code, which is called aliases or union like:
-type PopularTag = string;
-type MaybePopularTag = PopularTag | null;
+// type PopularTag = string;
+// type MaybePopularTag = PopularTag | null;
 
-const popularTag: PopularTag[] = ["dragon", "coffee", "pizza"];
+// const popularTag: PopularTag[] = ["dragon", "coffee", "pizza"];
 
-const dragonsTag: MaybePopularTag = null;
+// const dragonsTag: MaybePopularTag = null;
+
+//never will never return anything, it will throw an error a function returning never cannot have a reachable end point
+//the way we fix it is by throwing never
+// const doSomething = (): never => {
+//     throw "never";
+// }
+
+//type unknown is not assignable to type string but any can be
+// let vAny: any = 10;
+// let vUnknown: unknown = 10;
+// let s1:string = vAny;
+// let s2:string = vUnknown; 
