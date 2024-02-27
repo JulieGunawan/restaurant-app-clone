@@ -159,3 +159,6 @@ let pageName: string | number = "1";
 // how to convert or type assertion to string
 // let s2:string = vUnknown as string; 
 
+//double assertion
+let pageNumber: string = "1";
+let numericPageNumber: number = (pageNumber as unknown) as number;
