@@ -137,7 +137,7 @@ let pageName: string | number = "1";
 //      email: "g@g.com";
 // }
 
-//we could use type as clarity of our code like:
+//we could use type as clarity of our code, which is called aliases or union like:
 type PopularTag = string;
 type MaybePopularTag = PopularTag | null;
 
