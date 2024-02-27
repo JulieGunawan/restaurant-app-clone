@@ -50,3 +50,29 @@ console.log(customer?.birthday?.getFullYear());
 //Optional call
 let log: any = null;
 log?.("a");
+
+// type User={
+//     name:string;
+//     age:number;
+// }
+
+interface IUser {
+    name:string;
+    age?:number;
+    getMessage():string;
+}
+
+const user:IUser = {
+    name:"Monster",
+    age:30,
+    getMessage() {
+        return `Hello ${this.name}`
+    },
+};
+
+const user2:IUser = {
+    name:"Minion",
+    getMessage() {
+        return `Hello ${this.name}`
+    },
+}
