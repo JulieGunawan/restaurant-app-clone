@@ -155,4 +155,7 @@ let pageName: string | number = "1";
 // let vAny: any = 10;
 // let vUnknown: unknown = 10;
 // let s1:string = vAny;
-// let s2:string = vUnknown; 
+
+// how to convert or type assertion to string
+// let s2:string = vUnknown as string; 
+
