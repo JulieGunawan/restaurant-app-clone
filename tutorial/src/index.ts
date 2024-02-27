@@ -160,5 +160,19 @@ let pageName: string | number = "1";
 // let s2:string = vUnknown as string; 
 
 //double assertion
-let pageNumber: string = "1";
-let numericPageNumber: number = (pageNumber as unknown) as number;
+// let pageNumber: string = "1";
+// let numericPageNumber: number = (pageNumber as unknown) as number;
+
+//working with DOM, if we don't specify it as HTMLInputElement, it will show as Element, it doesn't know if it's input
+// const someElement = document.querySelector(".foo") as HTMLInputElement;
+//below is incorrect, by specifying someElement as HTMLInputElement, we can delete "as any"
+// console.log("someElement", (someElement as any).value);
+// console.log("someElement", someElement.value); //this is the correct way
+
+//if we add listener, without the HTMLInputElement, it will show event as a generic
+// const someElement = document.querySelector(".foo");
+// someElement.addEventListener("blur", (event) => {
+//     const target = event.target as HTMLInputElement;
+//     console.log("event", target.value);
+// });
+
