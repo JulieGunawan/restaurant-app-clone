@@ -221,9 +221,13 @@ const addId = <T>(obj:T) => {
     };
 };
 
-const person = {
+interface UserInterface {
+    name: string;
+}
+
+const person:UserInterface = {
     name:"Jack"
 };
 
-const personWithId = addId(person);
+const personWithId = addId<UserInterface>(person);
 console.log("result "+ personWithId);
