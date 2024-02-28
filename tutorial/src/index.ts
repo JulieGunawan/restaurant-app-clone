@@ -276,12 +276,25 @@
 // }
 
 //we could write it in capital letters with no values
-enum Status{
-    NotStarted,
-    InProgress,
-    Done
-}
+// enum Status{
+//     NotStarted,
+//     InProgress,
+//     Done
+// }
 
 //we could also create a datatype of enum
-let notStartedStatus: Status = Status.NotStarted;
-notStartedStatus = Status.InProgress;
+// let notStartedStatus: Status = Status.NotStarted;
+// notStartedStatus = Status.InProgress;
+
+//we could also assign string to our enum
+enum StatusEnum{
+    NotStarted = "not Started",
+    InProgress = "in progress",
+    Done = "done"
+}
+
+//use enum inside interfaces
+interface Task {
+    id: string;
+    status: StatusEnum;
+}
