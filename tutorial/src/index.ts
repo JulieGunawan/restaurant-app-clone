@@ -29,56 +29,56 @@
 
 // greet(null);
 
-type Customer = {
-    birthday:Date;
-}
+// type Customer = {
+//     birthday:Date;
+// }
 
-function getCustomer(id:number): Customer | null | undefined {
-    return id===0 ? null : {birthday: new Date()};
-}
+// function getCustomer(id:number): Customer | null | undefined {
+//     return id===0 ? null : {birthday: new Date()};
+// }
 
-let customer = getCustomer(1);
+// let customer = getCustomer(1);
 // if(customer !== null && customer !== undefined)
 //     console.log(customer.birthday);
 
 //Optional property access operator
-console.log(customer?.birthday?.getFullYear());
+// console.log(customer?.birthday?.getFullYear());
 
 //optional element access operator
 //customers?.[0];
 
 //Optional call
-let log: any = null;
-log?.("a");
+// let log: any = null;
+// log?.("a");
 
 // type User={
 //     name:string;
 //     age:number;
 // }
 
-interface IUser {
-    name:string;
-    age?:number;
-    getMessage():string;
-}
+// interface IUser {
+//     name:string;
+//     age?:number;
+//     getMessage():string;
+// }
 
-const user:IUser = {
-    name:"Monster",
-    age:30,
-    getMessage() {
-        return `Hello ${this.name}`
-    },
-};
+// const user:IUser = {
+//     name:"Monster",
+//     age:30,
+//     getMessage() {
+//         return `Hello ${this.name}`
+//     },
+// };
 
-const user2:IUser = {
-    name:"Minion",
-    getMessage() {
-        return `Hello ${this.name}`
-    },
-}
+// const user2:IUser = {
+//     name:"Minion",
+//     getMessage() {
+//         return `Hello ${this.name}`
+//     },
+// }
 
 //this way of defining type is valid, but not for interface
-type ID = string;
+// type ID = string;
 
 //interface is related to entity or object, if we write it like type, it won't work
 // interface UserInterface{
@@ -95,32 +95,32 @@ type ID = string;
 //     getPermission():string[] 
 // }
 
-type User = {
-    id: ID;
-    name: string;
-    surname: string;
-    email: string,
-    getPermission: (id: string) => string;
-}
-type Admin = User & {
-    permissions: string[];
-    //using type, it can overwrite the User getPermission function, but if we define in interface, it won't work
-    getPermission: (id: string[]) => string[];
-}
+// type User = {
+//     id: ID;
+//     name: string;
+//     surname: string;
+//     email: string,
+//     getPermission: (id: string) => string;
+// }
+// type Admin = User & {
+//     permissions: string[];
+//     //using type, it can overwrite the User getPermission function, but if we define in interface, it won't work
+//     getPermission: (id: string[]) => string[];
+// }
 
-const user1: Admin = {
-    id: "1",
-    name: "Alex",
-    surname: "S",
-    email: "a@a.com",
-    permissions: ["read", "write"],
-    getPermission(id: string[] | string) {
-        return (typeof id === "string" ? id : [id]) as string[] & string;
-    }
-}
-let username: string = "Alexandra";
+// const user1: Admin = {
+//     id: "1",
+//     name: "Alex",
+//     surname: "S",
+//     email: "a@a.com",
+//     permissions: ["read", "write"],
+//     getPermission(id: string[] | string) {
+//         return (typeof id === "string" ? id : [id]) as string[] & string;
+//     }
+// }
+// let username: string = "Alexandra";
 
-let pageName: string | number = "1";
+// let pageName: string | number = "1";
 
 //you can create class to implement interface or type in typescript
 //for example like this
@@ -175,40 +175,55 @@ let pageName: string | number = "1";
 //     const target = event.target as HTMLInputElement;
 //     console.log("event", target.value);
 // });
-interface UserI {
-    getFullname():string;
-}
-class Person implements UserI {
-    private firstName: string;
-    private lastName:string;
-    readonly nickName: string;
-    static readonly maxAge = 50; //static is only accessible from the class itself,
-    constructor(firstName: string, lastName: string){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.nickName = firstName;
-    }
-    //if below is not implemented, we will get an error as it is required because we implemented the interface
-    getFullname():string {
-        return `${this.firstName} ${this.lastName}`
-    }
-}
-//inheritance
-class Developer extends Person {
-    private editor: string;
+// interface UserI {
+//     getFullname():string;
+// }
+// class Person implements UserI {
+//     private firstName: string;
+//     private lastName:string;
+//     readonly nickName: string;
+//     static readonly maxAge = 50; //static is only accessible from the class itself,
+//     constructor(firstName: string, lastName: string){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//         this.nickName = firstName;
+//     }
+//     //if below is not implemented, we will get an error as it is required because we implemented the interface
+//     getFullname():string {
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+// //inheritance
+// class Developer extends Person {
+//     private editor: string;
 
-    setEditor(editor: string):void {
-        this.editor = editor;
-    }
+//     setEditor(editor: string):void {
+//         this.editor = editor;
+//     }
 
-    getEditor():string {
-        return this.editor;
-    }
-}
+//     getEditor():string {
+//         return this.editor;
+//     }
+// }
 
-const person = new Person("Amanda", "S");
-const developer = new Developer("Bobby", "S");
+// const person = new Person("Amanda", "S");
+// const developer = new Developer("Bobby", "S");
 
-console.log(person.getFullname());
-console.log(person.maxAge); //this is invalid as we can't access it
-console.log(Person.maxAge); //this is valid
+// console.log(person.getFullname());
+// console.log(person.maxAge); //this is invalid as we can't access it
+// console.log(Person.maxAge); //this is valid
+
+const addId = <T>(obj:T) => {
+    const id = Math.random().toString(16);
+    return {
+        ...obj,
+        id,
+    };
+};
+
+const person = {
+    name:"Jack"
+};
+
+const personWithId = addId(person);
+console.log("result "+ personWithId);

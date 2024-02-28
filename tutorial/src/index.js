@@ -1,45 +1,114 @@
 // type Draggable = {
 //     drag: () => void;
 // }
-var _a;
-function getCustomer(id) {
-    return id === 0 ? null : { birthday: new Date() };
-}
-var customer = getCustomer(1);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+// type Resizeable = {
+//     resize: () => void;
+// }
+// type UIWidget = Draggable & Resizeable;
+// let textBox: UIWidget = {
+//     drag: () => {},
+//     resize: () => {},
+// }
+//literal type (exact, specific)
+// type Quantity = 50 | 100;
+// let quantity: Quantity = 100;
+// type Metric = 'cm' | 'inch';
+//Nullable type
+// function greet(name:string | null | undefined){
+//     if (name)
+//         console.log(name.toUpperCase());
+//     else
+//         console.log("Hola!");
+// }
+// greet(null);
+// type Customer = {
+//     birthday:Date;
+// }
+// function getCustomer(id:number): Customer | null | undefined {
+//     return id===0 ? null : {birthday: new Date()};
+// }
+// let customer = getCustomer(1);
 // if(customer !== null && customer !== undefined)
 //     console.log(customer.birthday);
 //Optional property access operator
-console.log((_a = customer === null || customer === void 0 ? void 0 : customer.birthday) === null || _a === void 0 ? void 0 : _a.getFullYear());
+// console.log(customer?.birthday?.getFullYear());
 //optional element access operator
 //customers?.[0];
 //Optional call
-var log = null;
-log === null || log === void 0 ? void 0 : log("a");
-var user = {
-    name: "Monster",
-    age: 30,
-    getMessage: function () {
-        return "Hello ".concat(this.name);
-    },
-};
-var user2 = {
-    name: "Minion",
-    getMessage: function () {
-        return "Hello ".concat(this.name);
-    },
-};
-var user1 = {
-    id: "1",
-    name: "Alex",
-    surname: "S",
-    email: "a@a.com",
-    permissions: ["read", "write"],
-    getPermission: function (id) {
-        return (typeof id === "string" ? id : [id]);
-    }
-};
-var username = "Alexandra";
-var pageName = "1";
+// let log: any = null;
+// log?.("a");
+// type User={
+//     name:string;
+//     age:number;
+// }
+// interface IUser {
+//     name:string;
+//     age?:number;
+//     getMessage():string;
+// }
+// const user:IUser = {
+//     name:"Monster",
+//     age:30,
+//     getMessage() {
+//         return `Hello ${this.name}`
+//     },
+// };
+// const user2:IUser = {
+//     name:"Minion",
+//     getMessage() {
+//         return `Hello ${this.name}`
+//     },
+// }
+//this way of defining type is valid, but not for interface
+// type ID = string;
+//interface is related to entity or object, if we write it like type, it won't work
+// interface UserInterface{
+//     id: ID;
+//     name: string;
+//     surname: string;
+//     email: string;
+//     getPermission():string;
+// }
+// interface Admin extends UserInterface {
+//     permissions: string[];
+//     below code won't work, as we will get an error types returned are incompatible
+//     getPermission():string[] 
+// }
+// type User = {
+//     id: ID;
+//     name: string;
+//     surname: string;
+//     email: string,
+//     getPermission: (id: string) => string;
+// }
+// type Admin = User & {
+//     permissions: string[];
+//     //using type, it can overwrite the User getPermission function, but if we define in interface, it won't work
+//     getPermission: (id: string[]) => string[];
+// }
+// const user1: Admin = {
+//     id: "1",
+//     name: "Alex",
+//     surname: "S",
+//     email: "a@a.com",
+//     permissions: ["read", "write"],
+//     getPermission(id: string[] | string) {
+//         return (typeof id === "string" ? id : [id]) as string[] & string;
+//     }
+// }
+// let username: string = "Alexandra";
+// let pageName: string | number = "1";
 //you can create class to implement interface or type in typescript
 //for example like this
 //interface User {
@@ -82,15 +151,45 @@ var pageName = "1";
 //     const target = event.target as HTMLInputElement;
 //     console.log("event", target.value);
 // });
-var Person = /** @class */ (function () {
-    function Person(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    Person.prototype.getFullname = function () {
-        return "".concat(this.firstName, " ").concat(this.lastName);
-    };
-    return Person;
-}());
-var person = new Person("Amanda", "S");
-console.log(person.getFullname());
+// interface UserI {
+//     getFullname():string;
+// }
+// class Person implements UserI {
+//     private firstName: string;
+//     private lastName:string;
+//     readonly nickName: string;
+//     static readonly maxAge = 50; //static is only accessible from the class itself,
+//     constructor(firstName: string, lastName: string){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//         this.nickName = firstName;
+//     }
+//     //if below is not implemented, we will get an error as it is required because we implemented the interface
+//     getFullname():string {
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+// //inheritance
+// class Developer extends Person {
+//     private editor: string;
+//     setEditor(editor: string):void {
+//         this.editor = editor;
+//     }
+//     getEditor():string {
+//         return this.editor;
+//     }
+// }
+// const person = new Person("Amanda", "S");
+// const developer = new Developer("Bobby", "S");
+// console.log(person.getFullname());
+// console.log(person.maxAge); //this is invalid as we can't access it
+// console.log(Person.maxAge); //this is valid
+var addId = function (obj) {
+    var id = Math.random().toString(16);
+    return __assign(__assign({}, obj), { id: id });
+};
+var person = {
+    name: "Jack"
+};
+var personWithId = addId(person);
+console.log("result " + personWithId);
