@@ -193,8 +193,21 @@ class Person implements UserI {
         return `${this.firstName} ${this.lastName}`
     }
 }
+//inheritance
+class Developer extends Person {
+    private editor: string;
+
+    setEditor(editor: string):void {
+        this.editor = editor;
+    }
+
+    getEditor():string {
+        return this.editor;
+    }
+}
 
 const person = new Person("Amanda", "S");
+const developer = new Developer("Bobby", "S");
 
 console.log(person.getFullname());
 console.log(person.maxAge); //this is invalid as we can't access it
