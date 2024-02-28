@@ -243,3 +243,27 @@ const person:UserInterface<{meta:string}, string> = {
 
 // const personWithId = addId<UserInterface>(person);
 // console.log("result "+ personWithId);
+
+/**
+* Returns a new list containing the contents of the given list, followed by the given element
+**/
+//below function means a function named append with T generic type with 2 arguments: el of type, and list of T array.
+//eg if we provide string in first argument, T will be string. second argument is readonly T array. 
+//the function returns a T array
+export function append<T>(el:T, list: readonly T[]): T[]; 
+//example
+const updatedArray =  append<string>('baz', ['foo', 'bar']);
+
+/**
+ * Returns true if at least one of elements of the list match the predicate, false otherwise.
+ **/
+//we have a function named any with 2 arguments: fn and list.
+//first argument is a function with an argument that has the same type of any<T>, and returns boolean
+//second argument is a list of T array. The function any returns boolean
+export function any<T>(fn: (a:T) => boolean, list:readonly T[]):boolean;
+
+//example
+const searchStr = 'foo';
+const hasSearchedString = any<string>((el:string) => el.contains(searchStr),    
+    ['fooooo','bar','baz'
+])
