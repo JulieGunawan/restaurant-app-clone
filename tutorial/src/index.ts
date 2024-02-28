@@ -213,28 +213,28 @@
 // console.log(person.maxAge); //this is invalid as we can't access it
 // console.log(Person.maxAge); //this is valid
 
-const addId = <T extends object>(obj:T) => {
-    const id = Math.random().toString(16);
-    return {
-        ...obj,
-        id,
-    };
-};
+// const addId = <T extends object>(obj:T) => {
+//     const id = Math.random().toString(16);
+//     return {
+//         ...obj,
+//         id,
+//     };
+// };
 
-interface UserInterface<T, V> {
-    name: string;
-    data:T;
-    meta:V;
-}
+// interface UserInterface<T, V> {
+//     name: string;
+//     data:T;
+//     meta:V;
+// }
 
 //if we use UserInterface<T>, we get an error generic type requires 1 type argument
-const person:UserInterface<{meta:string}, string> = {
-    name:"Jack",
-    data: {
-        meta:"foo",
-    },
-    meta:"bar",
-};
+// const person:UserInterface<{meta:string}, string> = {
+//     name:"Jack",
+//     data: {
+//         meta:"foo",
+//     },
+//     meta:"bar",
+// };
 
 // const person2:UserInterface<string[]> = {
 //     name:"John",
@@ -250,9 +250,9 @@ const person:UserInterface<{meta:string}, string> = {
 //below function means a function named append with T generic type with 2 arguments: el of type, and list of T array.
 //eg if we provide string in first argument, T will be string. second argument is readonly T array. 
 //the function returns a T array
-export function append<T>(el:T, list: readonly T[]): T[]; 
+// export function append<T>(el:T, list: readonly T[]): T[]; 
 //example
-const updatedArray =  append<string>('baz', ['foo', 'bar']);
+// const updatedArray =  append<string>('baz', ['foo', 'bar']);
 
 /**
  * Returns true if at least one of elements of the list match the predicate, false otherwise.
@@ -260,10 +260,28 @@ const updatedArray =  append<string>('baz', ['foo', 'bar']);
 //we have a function named any with 2 arguments: fn and list.
 //first argument is a function with an argument that has the same type of any<T>, and returns boolean
 //second argument is a list of T array. The function any returns boolean
-export function any<T>(fn: (a:T) => boolean, list:readonly T[]):boolean;
+// export function any<T>(fn: (a:T) => boolean, list:readonly T[]):boolean;
 
-//example
-const searchStr = 'foo';
-const hasSearchedString = any<string>((el:string) => el.contains(searchStr),    
-    ['fooooo','bar','baz'
-])
+// //example
+// const searchStr = 'foo';
+// const hasSearchedString = any<string>((el:string) => el.contains(searchStr),    
+//     ['fooooo','bar','baz'
+// ])
+
+//ENUMS - enumerables. it generates incremental number
+// const statuses = {
+//     notStarted: 0,
+//     inProgress: 1,
+//     done: 2
+// }
+
+//we could write it in capital letters with no values
+enum Status{
+    NotStarted,
+    InProgress,
+    Done
+}
+
+//we could also create a datatype of enum
+let notStartedStatus: Status = Status.NotStarted;
+notStartedStatus = Status.InProgress;
