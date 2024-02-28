@@ -221,13 +221,23 @@ const addId = <T extends object>(obj:T) => {
     };
 };
 
-interface UserInterface {
+interface UserInterface<T> {
     name: string;
+    data:T;
 }
 
-const person:UserInterface = {
-    name:"Jack"
+//if we use UserInterface<T>, we get an error generic type requires 1 type argument
+const person:UserInterface<{meta:string}> = {
+    name:"Jack",
+    data: {
+        meta:"foo",
+    }
 };
+
+const person2:UserInterface<string[]> = {
+    name:"John",
+    data: ["foo", "bar", "baz"],
+}
 
 const personWithId = addId<UserInterface>(person);
 console.log("result "+ personWithId);
