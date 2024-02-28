@@ -176,3 +176,20 @@ let pageName: string | number = "1";
 //     console.log("event", target.value);
 // });
 
+class Person {
+    private firstName: string;
+    private lastName:string;
+
+    constructor(firstName: string, lastName: string){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    getFullname():string {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+const person = new Person("Amanda", "S");
+
+console.log(person.getFullname());
