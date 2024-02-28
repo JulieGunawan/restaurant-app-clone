@@ -182,6 +182,7 @@ class Person implements UserI {
     private firstName: string;
     private lastName:string;
     readonly nickName: string;
+    static readonly maxAge = 50; //static is only accessible from the class itself,
     constructor(firstName: string, lastName: string){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -196,3 +197,5 @@ class Person implements UserI {
 const person = new Person("Amanda", "S");
 
 console.log(person.getFullname());
+console.log(person.maxAge); //this is invalid as we can't access it
+console.log(Person.maxAge); //this is valid
