@@ -213,7 +213,7 @@
 // console.log(person.maxAge); //this is invalid as we can't access it
 // console.log(Person.maxAge); //this is valid
 
-const addId = <T>(obj:T) => {
+const addId = <T extends object>(obj:T) => {
     const id = Math.random().toString(16);
     return {
         ...obj,
