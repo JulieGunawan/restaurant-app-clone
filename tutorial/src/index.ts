@@ -175,8 +175,10 @@ let pageName: string | number = "1";
 //     const target = event.target as HTMLInputElement;
 //     console.log("event", target.value);
 // });
-
-class Person {
+interface UserI {
+    getFullname():string;
+}
+class Person implements UserI {
     private firstName: string;
     private lastName:string;
     readonly nickName: string;
@@ -185,7 +187,7 @@ class Person {
         this.lastName = lastName;
         this.nickName = firstName;
     }
-
+    //if below is not implemented, we will get an error as it is required because we implemented the interface
     getFullname():string {
         return `${this.firstName} ${this.lastName}`
     }
