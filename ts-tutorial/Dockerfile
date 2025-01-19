@@ -1,9 +1,9 @@
-FROM Ubuntu
+FROM ubuntu
 
 RUN apt-get update
 RUN apt-get install -y nodejs npm
 
-COPY . /opt/source-code
+COPY . /opt/src
 RUN npm start dev
 
 
