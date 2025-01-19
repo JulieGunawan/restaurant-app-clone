@@ -4,6 +4,6 @@ RUN apt-get update
 RUN apt-get install -y nodejs npm
 
 COPY . /opt/src
-RUN npm run dev
+RUN cd /opt/src && npm run dev
 
 
