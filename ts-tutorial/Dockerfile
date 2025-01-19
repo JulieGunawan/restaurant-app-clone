@@ -1,9 +1,19 @@
-FROM ubuntu
+FROM node:18-alpine
 
-RUN apt-get update
-RUN apt-get install -y nodejs npm
 
-COPY . /opt/src
-RUN cd /opt/src && npm run dev
+WORKDIR /opt/src
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run dev
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
+
 
 
