@@ -1,11 +1,10 @@
 import React  from "react";
-
-const CartPage = () =>{
+const Navbar = () =>{
     return (
         <div>
-            Cart Page
+            Navbar
         </div>
     )
 }
 
-export default CartPage;
+export default Navbar;

@@ -1,3 +1,5 @@
+import React  from "react";
+
 const MenuPage = () => {
     return (
     <div>
@@ -6,4 +8,4 @@ const MenuPage = () => {
 )
 }
 
-export default MenuPage
+export default MenuPage;

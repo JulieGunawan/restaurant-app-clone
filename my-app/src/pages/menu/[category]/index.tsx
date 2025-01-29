@@ -1,3 +1,5 @@
+import React  from "react";
+
 const CategoryPage = () => {
     return (
         <div>
@@ -6,4 +8,4 @@ const CategoryPage = () => {
     )
 }
 
-export default CategoryPage
+export default CategoryPage;
