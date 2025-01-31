@@ -71,10 +71,10 @@ export const menus: Menu[] = [
     },
     {
         id:3,
-        slug:"desserts",
+        slug:"sandwich",
         desc:"The perfect way to have your happiness on your plate",
         title:"Lighten Up",
-        img:"/assets/stackedSugar.jpg",
+        img:"/assets/baconPickleSandwich.jpg",
         color:"black"
     },
     {
@@ -85,4 +85,49 @@ export const menus: Menu[] = [
         img:"/assets/friedChicken.jpg",
         color:"white"
     }
+]
+
+export const sandwiches: Product[] = [
+    {
+        id:1,
+        image:"/assets/baconPickleSandwich.jpg",
+        title:"Bacon and Pickle",
+        desc:"Combination of bacon and pickles inside a sandwich",
+        price:19.50
+    },
+    { id:2,
+        image:"/assets/prociutoSandwich.jpg",
+        title:"All about Prociutto",
+        desc:"Prosciutto, cheese, and lots of other stuff in a sandwich",
+        price:21.00
+    },
+    {
+        id:3,
+        image:"/assets/veggieSandwich.jpg",
+        title:"Overloaded Veggie Sub",
+        desc:"We also have sandwich without meat",
+        price:17.50
+    },
+    {
+        id:4,
+        image:"/assets/tripleBurger.jpg",
+        title:"You can't forget burger",
+        desc:"Everybody remembers burger once in a while",
+        price:22.50
+    },
+    {
+        id:5,
+        image:"/assets/italianSausageSandwich.jpg",
+        title:"Fancy Italian Hot Dog",
+        desc:"Do you want hot dog but more boogie version?",
+        price:20.50
+    },
+    {
+        id:6,
+        image:"/assets/falafelSandwich.jpg",
+        title:"ChickADoo",
+        desc:"Chick peas in a sandwich",
+        price:18.50
+    }
+
 ]

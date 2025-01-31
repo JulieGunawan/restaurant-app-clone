@@ -10,6 +10,7 @@ export type Product = {
     title: string;
     desc?: string;
     price:number;
+    category?: string;
     options?: {
         title: string;
         additionalPrice: number;
