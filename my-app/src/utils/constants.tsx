@@ -1,4 +1,4 @@
-import { Product } from "./type"
+import { Menu, Product } from "./type"
 
 export const links = [
     {id:1, title:"Homepage", url:"/"},
@@ -49,6 +49,40 @@ export const products: Product[] = [
         title:"Melted Sandwich",
         desc:"Taste the sliced roast beef with melted cheese and arugula on the side",
         price:17.50
+    },  
+]
+
+export const menus: Menu[] = [
+    {
+        id:1,
+        slug:"breakfast",
+        desc:"Breakfast is the most important meal of the day, grab those beast and boost your energy",
+        title:"Start Your Day",
+        img:"/assets/muffin.jpg",
+        color:"blue"
     },
-   
+    {
+        id:2,
+        slug:"pasta",
+        desc:" Enjoy the taste of perfection with our exquisite Italian handmade pasta",
+        title:"Italianst Pasta",
+        img:"/assets/rawPasta.jpg",
+        color:"white"
+    },
+    {
+        id:3,
+        slug:"desserts",
+        desc:"The perfect way to have your happiness on your plate",
+        title:"Lighten Up",
+        img:"/assets/stackedSugar.jpg",
+        color:"black"
+    },
+    {
+        id:4,
+        slug:"fastFood",
+        desc:"Irresistible pieces, crunchy, delicious and cheesy",
+        title:"Party Time",
+        img:"/assets/friedChicken.jpg",
+        color:"white"
+    }
 ]

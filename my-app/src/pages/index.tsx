@@ -1,19 +1,16 @@
-import Notification from "@/components/Notification";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import Slider from "@/components/Slider";
 import Offer from "@/components/Offer";
 import Featured from "@/components/Featured";
+import MainLayout from "@/layouts/MainLayout";
 
 export default function Home() {
   return (
     <div>
-      <Notification />
-      <Navbar />
-      <Slider />
-      <Featured />
-      <Offer />
-      <Footer />
+      <MainLayout>
+        <Slider />
+        <Featured />
+        <Offer />
+      </MainLayout> 
     </div>
   );
 }
