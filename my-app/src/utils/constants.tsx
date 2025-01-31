@@ -42,5 +42,13 @@ export const products: Product[] = [
         title:"Margerita Pizza",
         desc:"The best pizza topped with basil and mozza cheese",
         price:19.90
-    }
+    },
+    {
+        id:5,
+        image:"/assets/sandwich.jpg",
+        title:"Melted Sandwich",
+        desc:"Taste the sliced roast beef with melted cheese and arugula on the side",
+        price:17.50
+    },
+   
 ]
