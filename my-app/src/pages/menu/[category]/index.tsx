@@ -16,7 +16,7 @@ const CategoryPage = () => {
                         </div>
                         <div className="flex items-center justify-between font-bold ">
                             <h1 className="text-2xl uppercase p-2">{sandwich.title}</h1>
-                            <h2 className="text-xl group-hover:hidden font-bold">${sandwich.price}</h2>
+                            <h2 className="text-xl group-hover:hidden font-bold">${sandwich.price.toFixed(2)}</h2>
                             <button className="hidden group-hover:block bg-red-500 text-white px-4 py-2 rounded-md uppercase">Add to Cart</button>    
                         </div>
                     </Link>

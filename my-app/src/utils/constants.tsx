@@ -129,5 +129,17 @@ export const sandwiches: Product[] = [
         desc:"Chick peas in a sandwich",
         price:18.50
     }
-
 ]
+
+export const singleProduct: Product = {
+    id:1,
+    image:"/assets/pasta.jpg",
+    title:"Healthy Pasta",
+    desc:"Get your daily fibers and carbs in this homemade plate",
+    price:18.75,
+    options: [
+        {title:"Add Sausage", additionalPrice: 3},
+        {title:"Add Chicken/Beef", additionalPrice: 5},
+        {title:"Add Seafood", additionalPrice: 8}
+    ]
+}
