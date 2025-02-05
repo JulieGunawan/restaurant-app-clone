@@ -1,15 +1,14 @@
 
-import React, { use, useEffect } from "react";
+import React from "react";
 
 type PriceProps = {
     price: number
-    id: number
     options?: {
         title: string
         additionalPrice: number
     }[];
 }
-const Price = ({price, id, options}:PriceProps) => {
+const Price = ({price,  options}:PriceProps) => {
 
     const [quantity, setQuantity] = React.useState(1);
     

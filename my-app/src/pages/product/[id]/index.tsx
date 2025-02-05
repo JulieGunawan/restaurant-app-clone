@@ -16,7 +16,7 @@ const ProductPage = () => {
                 <div className="flex h-1/2 flex-col gap-4">
                     <h1 className="text-3xl font-bold uppercase">{singleProduct.title}</h1>
                     <p>{singleProduct.desc}</p>
-                    <Price price={singleProduct.price} id={singleProduct.id} options={singleProduct.options} />
+                    <Price price={singleProduct.price} options={singleProduct.options} />
                 </div>
             </div>
         </MainLayout>
