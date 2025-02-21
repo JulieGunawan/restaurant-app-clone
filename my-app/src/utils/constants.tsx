@@ -138,8 +138,42 @@ export const singleProduct: Product = {
     desc:"Get your daily fibers and carbs in this homemade plate",
     price:18.75,
     options: [
+        {title:"Add Nothing", additionalPrice: 0},
         {title:"Add Sausage", additionalPrice: 3},
         {title:"Add Chicken/Beef", additionalPrice: 5},
         {title:"Add Seafood", additionalPrice: 8}
     ]
 }
+
+export const cartItems: Product[] = [
+    {
+        id:1,
+        image:"/assets/pasta.jpg",
+        title:"Healthy Pasta",
+        desc:"Get your daily fibers and carbs in this homemade plate",
+        price:18.75,
+        options: [
+            {title:"Add Seafood", additionalPrice: 8}
+        ]
+    },
+    {
+        id:2,
+        image:"/assets/falafelSandwich.jpg",
+        title:"ChickADoo",
+        desc:"Chick peas in a sandwic",
+        price:18.50,
+        options: [
+            {title:"Add extra topping", additionalPrice: 4}
+        ]
+    },
+    {
+        id:3,
+        image:"/assets/pancake.jpg",
+        title:"Stacked Pannenkoek",
+        desc:"Imagine a stack of pancakes with a block of butter",
+        price:17.50,
+        options: [
+            {title:"Extra chocolate chips", additionalPrice: 1.75}
+        ]
+    }
+]

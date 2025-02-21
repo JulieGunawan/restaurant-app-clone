@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const Countdown = dynamic(() => import("react-countdown"), { ssr: false });
 
-const endingDate = new Date("2025-02-28");
+const endingDate = new Date("2025-03-28");
 
 const CountDown = () => {
     return (
