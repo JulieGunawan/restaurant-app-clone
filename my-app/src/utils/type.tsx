@@ -22,6 +22,6 @@ export type Menu = {
     slug: string;
     title: string;
     desc?: string;
-    img: string;
+    img?: string;
     color: string;
 };

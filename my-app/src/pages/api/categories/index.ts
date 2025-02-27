@@ -14,8 +14,7 @@ export default async function handler(
     }catch(err){
       const error = err as Error;
       return res.status(500).json({ error: "Fail to fetch", details: error.message });
-    }
-    
+    }   
   } 
   else if (req.method === 'POST') {
     return res.status(200).json({ message: "John Doe" });

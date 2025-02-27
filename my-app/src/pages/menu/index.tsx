@@ -1,9 +1,33 @@
 import MainLayout from "@/layouts/MainLayout";
-import { menus } from "@/utils/constants";
+import { Menu } from "@/utils/type";
+// import { menus } from "@/utils/constants";
 import Link from "next/link";
-import React  from "react";
+import React, { useEffect, useState }  from "react";
 
 const MenuPage = () => {
+    const [menus, setMenus] = useState<Menu[]>([]);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const res = await fetch('/api/categories',{
+                    cache:'no-store'
+                });
+            
+                if(!res.ok){
+                    throw new Error('Failed to fetch data');
+                }
+            
+                const data = await res.json();
+                setMenus(data);
+            }
+            catch (err){
+                console.log(err);
+            }
+        };
+        fetchData();
+    },[]);
+
     return (
     <MainLayout>
         <div className = "p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] flex flex-col md:flex-row">
