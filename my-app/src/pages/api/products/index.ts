@@ -13,7 +13,11 @@ export default async function handler(
     
   if(req.method === 'GET') {
     try{
-      const products = await prisma.product.findMany();
+      const products = await prisma.product.findMany({
+        where:{
+          isFeatured: true
+        }
+      });
       return res.status(200).json(products);
     }catch(err){
       const error = err as Error;
