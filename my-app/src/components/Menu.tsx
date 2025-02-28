@@ -9,11 +9,10 @@ import CartIcon from "./CartIcon";
 const MenuComponent = () => {
     const [open, setOpen] = useState(false);
     const user = false;
-    console.log(open);
     return (
     <div >
         <div className="items-center">
-            {!open && <Image src="/assets/icons8-menu-32.png" alt ="MenuBar" width={25} height={25} onClick={()=>setOpen(true)}/>}
+            {!open && <Image src="/assets/icons8-menu-32.png"  alt ="MenuBar" width={25} height={25} onClick={()=>setOpen(true)}/>}
             {open && <Image src="/assets/icons8-close-window-100.png" alt="CloseBar" width={25} height={25} onClick={()=>setOpen(false)}/>}
         </div>
         {open && <div className="bg-red-500 text-white absolute left-0 top-24 w-full h-[calc(100vh-6rem)] flex flex-col items-center justify-center text-3xl gap-8 z-10">

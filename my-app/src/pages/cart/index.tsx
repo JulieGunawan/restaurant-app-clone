@@ -23,7 +23,7 @@ const CartPage = () =>{
                         
                         return(
                             <div className="flex items-center justify-between mb-4 " key={item.id}>
-                            <Image src={item.image} alt="logo" width={100} height={100} className="object-contain" />
+                            <Image src={item.image || '/assets/blankImage.jpg'} alt="logo" width={100} height={100} className="object-contain" />
                             <div className="">
                                 <h1 className="font-bold text-xl uppercase">{item.title}</h1>
                                 {item.options && <span>{item.options[0].title}</span>}

@@ -160,7 +160,7 @@ export const cartItems: Product[] = [
         id:2,
         image:"/assets/falafelSandwich.jpg",
         title:"ChickADoo",
-        desc:"Chick peas in a sandwic",
+        desc:"Chick peas in a sandwich",
         price:18.50,
         options: [
             {title:"Add extra topping", additionalPrice: 4}

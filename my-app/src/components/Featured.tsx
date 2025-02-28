@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { products } from '@/utils/constants';
+import { Product } from '@/utils/type';
 
 const Featured = () => {
+    const [products, setProducts] = useState<Product[]>([]);    
+    
+    useEffect(() => {
+       const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/products', { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error('Failed to fetch product with feature');
+            }
+            const fetchedData = await response.json();
+            const fetchedProducts = fetchedData.map((product:Product) => ({
+                ...product,
+                price: Number(product.price),
+            }));
+            setProducts(fetchedProducts);
+        }
+        catch (error) {
+            console.log(error);
+        }
+       }
+       fetchData();
+    }, [])
+  
     return (
         <div className="w-screen overflow-x-scroll text-red-500">
             <div className="w-max flex">
@@ -10,7 +33,7 @@ const Featured = () => {
                     <div key={product.id}>
                          <div className="w-screen h-[60vh] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]">
                             <div className="relative flex-1 w-full hover:rotate-[60deg] transition-all duration-500" >
-                                <Image src={product.image || ""} alt={product.title} fill className='object-contain'/>
+                                <Image src={product.image || '/assets/blankImage.jpg'} alt={product.title} fill className='object-contain'/>
                             </div>
                             <div className="flex-1 gap-4 flex flex-col items-center justify-center">
                                 <h1 className="text-xl font-bold uppercase xl:text-2xl 2xl:text-3xl">{product.title}</h1>

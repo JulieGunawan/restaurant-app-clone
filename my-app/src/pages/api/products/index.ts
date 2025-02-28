@@ -1,18 +1,23 @@
 import { prisma } from "@/utils/connect";
 import { NextApiRequest, NextApiResponse } from "next";
 
+
 //FETCH ALL CATEGORIES
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+    // const {searchParams} = new URL(req.url!);
+    // const cat = searchParams.get('cat');
+
+    
   if(req.method === 'GET') {
     try{
-      const categories = await prisma.category.findMany();
-      return res.status(200).json(categories);
+      const products = await prisma.product.findMany();
+      return res.status(200).json(products);
     }catch(err){
       const error = err as Error;
-      return res.status(500).json({ error: "Fail to fetch categories", details: error.message });
+      return res.status(500).json({ error: "Fail to fetch products", details: error.message });
     }   
   } 
   else if (req.method === 'POST') {
