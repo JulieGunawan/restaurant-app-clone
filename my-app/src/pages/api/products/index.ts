@@ -7,15 +7,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-    // const {searchParams} = new URL(req.url!);
-    // const cat = searchParams.get('cat');
+    const url = new URL(req.url || '', `http://localhost:3000`);
+    const searchParams = url.searchParams;
+    const category = searchParams?.get('category');
 
     
   if(req.method === 'GET') {
     try{
       const products = await prisma.product.findMany({
-        where:{
-          isFeatured: true
+        where:{         
+           ...(category  ? {catSlug: category} : {isFeatured: true})
         }
       });
       return res.status(200).json(products);

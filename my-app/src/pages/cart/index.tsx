@@ -19,8 +19,7 @@ const CartPage = () =>{
             <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]  flex flex-col lg:flex-row text-red-400 md:w-full ">
                 <div className="h-1/2 lg:h-full lg:w-2/3 flex flex-col p-4 lg:px-20 xl:px-40 overflow-scroll 2xl:w-1/2 justify-center">
                     {cartItems.map(item => {
-                        const totalPrice = item.price + (item.options ? item.options[0].additionalPrice : 0);
-                        
+                        const totalPrice = item.price + (item.options ? item.options[0].additionalPrice : 0);                      
                         return(
                             <div className="flex items-center justify-between mb-4 " key={item.id}>
                             <Image src={item.image || '/assets/blankImage.jpg'} alt="logo" width={100} height={100} className="object-contain" />
