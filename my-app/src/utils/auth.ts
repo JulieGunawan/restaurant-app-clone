@@ -8,7 +8,8 @@ export const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
             //these as string vs ! is the same thing to force type to be string instead of undefined
-            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            // clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!
         })
     ]
