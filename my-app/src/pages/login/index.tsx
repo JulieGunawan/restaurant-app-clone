@@ -4,11 +4,17 @@ import Image from "next/image";
 import MainLayout from "@/layouts/MainLayout";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
     const {data, status} = useSession();
-    console.log("data", data);
-    console.log("status", status);
+    const router =  useRouter();
+    
+    if (status === "loading") {
+        return <p>Loading...</p>
+    } else if (status === "authenticated") {
+        router.push("/");
+    } else {
     return (
         <MainLayout>
         <div className=" h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] flex items-center justify-center">
@@ -38,6 +44,7 @@ const LoginPage = () => {
         </div>
         </MainLayout>
     )
+}
 }
 
 export default LoginPage;

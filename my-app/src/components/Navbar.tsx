@@ -4,8 +4,8 @@ import React  from "react";
 import MenuComponent from "./Menu";
 import { links } from "@/utils/constants";
 import CartIcon from "./CartIcon";
+import UserLinks from "./UserLinks";
 const Navbar = () =>{
-    const user = false;
     return (
         <div className="h-12 md:h-20 text-red-500 p-4 flex justify-between border-b-2 border-b-red-500 uppercase items-center lg:px-18 xl:px-40">
             {/* LEFT LINKS */}
@@ -31,8 +31,7 @@ const Navbar = () =>{
                     <Image src="/assets/icons8-phone-100.png" width={35} height={35} alt="phone"/>
                     <span>123 456 789</span>
                 </div>
-                {user ? <Link href="/order">Order</Link> : 
-                <Link  href="/login">Login</Link>}
+                <UserLinks />
                 <CartIcon />
             </div>
         </div>
