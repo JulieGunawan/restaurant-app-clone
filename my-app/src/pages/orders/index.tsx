@@ -15,7 +15,7 @@ const Orders = () =>{
 
     return (
         <MainLayout>
-           <OrderTables status={status}/>
+           <OrderTables status={status} session={session}  />
         </MainLayout>
     )
 }

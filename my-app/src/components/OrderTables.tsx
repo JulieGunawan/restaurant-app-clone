@@ -1,17 +1,16 @@
 "use client";
 import { OrderStatus, Order } from "@/utils/type";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 
-
-const OrderTables = ({status}:OrderStatus ) => {
+const OrderTables = ({status, session}:OrderStatus ) => {
+    
     const {isLoading, error, data} = useQuery({
         queryKey: ["orders"],
         queryFn: async () => {
             const response = await fetch("/api/orders");
-            console.log("response", response);
             if (!response.ok) {
                 const error = await response.json().catch(()=>{});
-                console.log("error", error);
                 throw new Error(error.message || "Failed to fetch orders");
             } 
             const data = response.json();
@@ -22,8 +21,13 @@ const OrderTables = ({status}:OrderStatus ) => {
         return <div>Loading...</div>;
     }
 
+    const handleUpdate = async (id:string) => {
+        const item = await fetch(`/api/orders/${id}`, {
+            
+        })
+    }
     return (
-        <div className="p-4 md:px-10 lg:px-20 xl:px-35  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] ">
+        <div className="p-4 md:px-10 lg:px-20 xl:px-35  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]">
             <table className="w-full border-separate border-spacing-2">
                 <thead>
                     <tr className="text-left">
@@ -42,7 +46,20 @@ const OrderTables = ({status}:OrderStatus ) => {
                                 <td className="py-6 px-1">{order.createdAt.toString().slice(0,10)}</td>
                                 <td className="py-6 px-1">${order.price}</td>
                                 <td className="hidden md:block py-6 px-1">{order.products.map((product)=>product.title).join(", ") }</td>
-                                <td className="py-6 px-1">{order.status}</td>
+                                {session?.user.isAdmin ? (      
+                                    <td className="py-6 px-1">
+                                        <form className="flex flex-row gap-4 items-center justify-center" 
+                                        onSubmit={()=>handleUpdate(order.id)}>
+                                            <input placeholder={order.status} className="p-2 ring-1 ring-red-1-- rounded-md"></input>
+                                            <button type="submit" className="p-2 rounded-full bg-red-400">
+                                                <Image src="/assets/icons8-edit-24.png" height={20} width={20} alt="edit"></Image>
+                                            </button>
+                                        </form>
+                                    </td>
+                                ) : (
+                                        <td className="py-6 px-1">{order.status}</td>   
+                                    )
+                                }
                             </tr>                       
                         )
                     })}

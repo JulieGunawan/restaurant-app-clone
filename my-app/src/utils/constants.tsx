@@ -17,35 +17,35 @@ export const sliderList = [
 export const products: Product[] = [
     {
         id:1,
-        image:"/assets/pancake.jpg",
+        img:"/assets/pancake.jpg",
         title:"Stacked Pannenkoek",
         desc:"Imagine a stack of pancakes with a block of butter",
         price:17.50
     },
     {
         id:2,
-        image:"/assets/spaghetti.jpg",
+        img:"/assets/spaghetti.jpg",
         title:"Pizza",
         desc:"The spaghetti in old country with meat sauce",
         price:21.50
     },
     {
         id:3,
-        image:"/assets/yamFries.jpg",
+        img:"/assets/yamFries.jpg",
         title:"Gourmet Fries",
         desc:"Yam fries with gourmet aeolis",
         price:9.50
     },
     {
         id:4,
-        image:"/assets/pizza.jpg",
+        img:"/assets/pizza.jpg",
         title:"Margerita Pizza",
         desc:"The best pizza topped with basil and mozza cheese",
         price:19.90
     },
     {
         id:5,
-        image:"/assets/sandwich.jpg",
+        img:"/assets/sandwich.jpg",
         title:"Melted Sandwich",
         desc:"Taste the sliced roast beef with melted cheese and arugula on the side",
         price:17.50
@@ -90,41 +90,41 @@ export const menus: Menu[] = [
 export const sandwiches: Product[] = [
     {
         id:1,
-        image:"/assets/baconPickleSandwich.jpg",
+        img:"/assets/baconPickleSandwich.jpg",
         title:"Bacon and Pickle",
         desc:"Combination of bacon and pickles inside a sandwich",
         price:19.50
     },
     { id:2,
-        image:"/assets/prociutoSandwich.jpg",
+        img:"/assets/prociutoSandwich.jpg",
         title:"All about Prociutto",
         desc:"Prosciutto, cheese, and lots of other stuff in a sandwich",
         price:21.00
     },
     {
         id:3,
-        image:"/assets/veggieSandwich.jpg",
+        img:"/assets/veggieSandwich.jpg",
         title:"Overloaded Veggie Sub",
         desc:"We also have sandwich without meat",
         price:17.50
     },
     {
         id:4,
-        image:"/assets/tripleBurger.jpg",
+        img:"/assets/tripleBurger.jpg",
         title:"You can't forget burger",
         desc:"Everybody remembers burger once in a while",
         price:22.50
     },
     {
         id:5,
-        image:"/assets/italianSausageSandwich.jpg",
+        img:"/assets/italianSausageSandwich.jpg",
         title:"Fancy Italian Hot Dog",
         desc:"Do you want hot dog but more boogie version?",
         price:20.50
     },
     {
         id:6,
-        image:"/assets/falafelSandwich.jpg",
+        img:"/assets/falafelSandwich.jpg",
         title:"ChickADoo",
         desc:"Chick peas in a sandwich",
         price:18.50
@@ -133,7 +133,7 @@ export const sandwiches: Product[] = [
 
 export const singleProduct: Product = {
     id:1,
-    image:"/assets/pasta.jpg",
+    img:"/assets/pasta.jpg",
     title:"Healthy Pasta",
     desc:"Get your daily fibers and carbs in this homemade plate",
     price:18.75,

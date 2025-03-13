@@ -1,3 +1,5 @@
+import { Session } from "next-auth";
+
 export type Link = {
     id: number;
     title: string;
@@ -38,6 +40,7 @@ export type Order = {
 
 export type OrderStatus = {
     status: "loading" | "authenticated" | "unauthenticated";
+    session: Session | null
 };
 
 
