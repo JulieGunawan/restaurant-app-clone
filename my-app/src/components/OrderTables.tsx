@@ -1,6 +1,5 @@
 "use client";
-import { OrderStatus } from "@/utils/type";
-import { Order } from "@prisma/client";
+import { OrderStatus, Order } from "@/utils/type";
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -23,9 +22,8 @@ const OrderTables = ({status}:OrderStatus ) => {
         return <div>Loading...</div>;
     }
 
-    console.log("data", data);
     return (
-        <div className="p-4 lg:px-20 xl:px-40  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] ">
+        <div className="p-4 md:px-10 lg:px-20 xl:px-35  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] ">
             <table className="w-full border-separate border-spacing-2">
                 <thead>
                     <tr className="text-left">
@@ -41,10 +39,10 @@ const OrderTables = ({status}:OrderStatus ) => {
                         return (
                             <tr key={order.id} className="text-sm md:text-base bg-red-50">
                                 <td className="hidden md:block  py-6 px-1">{order.id}</td>
-                                <td className="py-6 px-1">19.07.2023</td>
-                                <td className="py-6 px-1">$89.90</td>
-                                <td className="hidden md:block py-6 px-1">Big Burger Menu (2), Veggie Pizza (2), Coca Cola 1L (2)</td>
-                                <td className="py-6 px-1">On the way (approx. 10 min)...</td>
+                                <td className="py-6 px-1">{order.createdAt.toString().slice(0,10)}</td>
+                                <td className="py-6 px-1">${order.price}</td>
+                                <td className="hidden md:block py-6 px-1">{order.products.map((product)=>product.title).join(", ") }</td>
+                                <td className="py-6 px-1">{order.status}</td>
                             </tr>                       
                         )
                     })}

@@ -148,7 +148,7 @@ export const singleProduct: Product = {
 export const cartItems: Product[] = [
     {
         id:1,
-        image:"/assets/pasta.jpg",
+        img:"/assets/pasta.jpg",
         title:"Healthy Pasta",
         desc:"Get your daily fibers and carbs in this homemade plate",
         price:18.75,
@@ -158,7 +158,7 @@ export const cartItems: Product[] = [
     },
     {
         id:2,
-        image:"/assets/falafelSandwich.jpg",
+        img:"/assets/falafelSandwich.jpg",
         title:"ChickADoo",
         desc:"Chick peas in a sandwich",
         price:18.50,
@@ -168,7 +168,7 @@ export const cartItems: Product[] = [
     },
     {
         id:3,
-        image:"/assets/pancake.jpg",
+        img:"/assets/pancake.jpg",
         title:"Stacked Pannenkoek",
         desc:"Imagine a stack of pancakes with a block of butter",
         price:17.50,

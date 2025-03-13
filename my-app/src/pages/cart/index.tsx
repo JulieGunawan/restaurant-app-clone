@@ -22,7 +22,7 @@ const CartPage = () =>{
                         const totalPrice = item.price + (item.options ? item.options[0].additionalPrice : 0);                      
                         return(
                             <div className="flex items-center justify-between mb-4 " key={item.id}>
-                            <Image src={item.image || '/assets/blankImage.jpg'} alt="logo" width={100} height={100} className="object-contain" />
+                            <Image src={item.img || '/assets/blankImage.jpg'} alt="logo" width={100} height={100} className="object-contain" />
                             <div className="">
                                 <h1 className="font-bold text-xl uppercase">{item.title}</h1>
                                 {item.options && <span>{item.options[0].title}</span>}

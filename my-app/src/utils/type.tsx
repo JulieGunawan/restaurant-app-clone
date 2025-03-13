@@ -30,7 +30,7 @@ export type Order = {
     id: string;
     userEmail: string;
     price: number;
-    products: Product[];
+    products: CartItem[];
     status: string;
     createdAt: Date;
     intent_id?:string
@@ -39,3 +39,17 @@ export type Order = {
 export type OrderStatus = {
     status: "loading" | "authenticated" | "unauthenticated";
 };
+
+
+export type CartItem = {
+    id: number;
+    img?: string;
+    title: string;
+    desc?: string;
+    price: number;
+    quantity: number;
+    options?: {
+        title: string;
+        additionalPrice: number;
+    } [];
+}
