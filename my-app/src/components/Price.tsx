@@ -28,7 +28,7 @@ const Price = ({price,  options}:PriceProps) => {
 
     return (
         <div className="flex flex-col gap-4 md:gap-8 lg:gap-12">
-            <h2 className="text-2xl lg:text-3xl font-bold text-red-500">${total.toFixed(2)}</h2>      
+            <h2 className="text-2xl lg:text-3xl font-bold text-red-500">${total}</h2>      
             <div className="flex gap-4 lg:text-xl">
                 {options?.map((option, index) => (
                     <button key={`${option.title}-${index}`} className={`ring-1 py-2 px-4 ring-red-700 rounded-md min-w-[6rem]`} 
