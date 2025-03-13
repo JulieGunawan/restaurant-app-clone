@@ -25,3 +25,17 @@ export type Menu = {
     img?: string;
     color: string;
 };
+
+export type Order = {
+    id: string;
+    userEmail: string;
+    price: number;
+    products: Product[];
+    status: string;
+    createdAt: Date;
+    intent_id?:string
+}
+
+export type OrderStatus = {
+    status: "loading" | "authenticated" | "unauthenticated";
+};

@@ -2,6 +2,7 @@ import { getServerSession, NextAuthOptions, User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./connect";
+import { NextApiRequest, NextApiResponse } from "next";
 
 declare module "next-auth" {
     interface Session {
@@ -48,4 +49,10 @@ export const authOptions: NextAuthOptions = {
     }
 }
 
-export const getAuthSession = () => getServerSession(authOptions)
+export const getAuthSession = (req?:NextApiRequest, res?:NextApiResponse) => {
+    if (req && res){
+        return getServerSession(req, res, authOptions)
+    } else {
+        return getServerSession(authOptions)
+    }
+}

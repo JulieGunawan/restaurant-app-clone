@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const UserLinks = () => {
     const { status} = useSession();
-    console.log("status", status);
+
     return (
        <div>
         {status ==="authenticated" ? (
