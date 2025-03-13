@@ -11,11 +11,15 @@ const OrderTables = ({status, session}:OrderStatus ) => {
                 headers:{
                     "Content-Type": "application/json",
                 },
-                body:JSON.stringify(status),
+                body:JSON.stringify({status}),
+                method:"PUT"
             });            
         },
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey:["orders"]});
+        },
+        onError: () => {
+            console.log("error updating the form");
         }
     })
 
@@ -40,7 +44,7 @@ const OrderTables = ({status, session}:OrderStatus ) => {
     const handleUpdate = async (e:React.FormEvent<HTMLFormElement>,id:string) => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        const input = form.element[0] as HTMLInputElement;
+        const input = form.elements[0] as HTMLInputElement;
         const status = input.value;
         mutation.mutate({id, status});
     }
@@ -68,7 +72,7 @@ const OrderTables = ({status, session}:OrderStatus ) => {
                                     <td className="py-6 px-1">
                                         <form className="flex flex-row gap-4 items-center justify-center" 
                                         onSubmit={(e)=>handleUpdate(e,order.id)}>
-                                            <input placeholder={order.status} className="p-2 ring-1 ring-red-1-- rounded-md"></input>
+                                            <input placeholder={order.status} className="p-2 ring-1 ring-red-1-- rounded-md"/>
                                             <button type="submit" className="p-2 rounded-full bg-red-400">
                                                 <Image src="/assets/icons8-edit-24.png" height={20} width={20} alt="edit"></Image>
                                             </button>
