@@ -1,10 +1,24 @@
 "use client";
 import { OrderStatus, Order } from "@/utils/type";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 
 const OrderTables = ({status, session}:OrderStatus ) => {
-    
+    const queryClient = useQueryClient();
+    const mutation = useMutation({
+        mutationFn: async ({id, status}:{id:string, status:string}) => {
+           return fetch(`/api/orders/${id}`, {
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify(status),
+            });            
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey:["orders"]});
+        }
+    })
+
     const {isLoading, error, data} = useQuery({
         queryKey: ["orders"],
         queryFn: async () => {
@@ -21,10 +35,14 @@ const OrderTables = ({status, session}:OrderStatus ) => {
         return <div>Loading...</div>;
     }
 
-    const handleUpdate = async (id:string) => {
-        const item = await fetch(`/api/orders/${id}`, {
-            
-        })
+    
+   
+    const handleUpdate = async (e:React.FormEvent<HTMLFormElement>,id:string) => {
+        e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const input = form.element[0] as HTMLInputElement;
+        const status = input.value;
+        mutation.mutate({id, status});
     }
     return (
         <div className="p-4 md:px-10 lg:px-20 xl:px-35  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]">
@@ -49,7 +67,7 @@ const OrderTables = ({status, session}:OrderStatus ) => {
                                 {session?.user.isAdmin ? (      
                                     <td className="py-6 px-1">
                                         <form className="flex flex-row gap-4 items-center justify-center" 
-                                        onSubmit={()=>handleUpdate(order.id)}>
+                                        onSubmit={(e)=>handleUpdate(e,order.id)}>
                                             <input placeholder={order.status} className="p-2 ring-1 ring-red-1-- rounded-md"></input>
                                             <button type="submit" className="p-2 rounded-full bg-red-400">
                                                 <Image src="/assets/icons8-edit-24.png" height={20} width={20} alt="edit"></Image>
