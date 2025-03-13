@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import AuthProvider from "@/components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -24,6 +26,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                             {children} 
                         </main>
                         <Footer />
+                        <ToastContainer position="bottom-right" theme="dark" autoClose={3000} />
                     </div>
                 </QueryProvider>
             </AuthProvider>

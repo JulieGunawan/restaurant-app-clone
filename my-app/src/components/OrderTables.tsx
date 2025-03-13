@@ -2,6 +2,7 @@
 import { OrderStatus, Order } from "@/utils/type";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 const OrderTables = ({status, session}:OrderStatus ) => {
     const queryClient = useQueryClient();
@@ -47,6 +48,7 @@ const OrderTables = ({status, session}:OrderStatus ) => {
         const input = form.elements[0] as HTMLInputElement;
         const status = input.value;
         mutation.mutate({id, status});
+        toast.success("The order status has been updated");
     }
     return (
         <div className="p-4 md:px-10 lg:px-20 xl:px-35  h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]">
@@ -63,7 +65,7 @@ const OrderTables = ({status, session}:OrderStatus ) => {
                 <tbody>
                     {data.map((order:Order) => {
                         return (
-                            <tr key={order.id} className="text-sm md:text-base bg-red-50">
+                            <tr key={order.id} className={`${order.status !== "Delivered" && "bg-red-50"}`} >
                                 <td className="hidden md:block  py-6 px-1">{order.id}</td>
                                 <td className="py-6 px-1">{order.createdAt.toString().slice(0,10)}</td>
                                 <td className="py-6 px-1">${order.price}</td>
