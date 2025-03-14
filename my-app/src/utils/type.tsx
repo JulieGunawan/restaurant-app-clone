@@ -7,7 +7,7 @@ export type Link = {
 }
 
 export type Product = {
-    id: number;
+    id: string;
     img: string;
     title: string;
     desc?: string;
