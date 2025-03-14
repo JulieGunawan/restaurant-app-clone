@@ -1,3 +1,4 @@
+import { Action } from "@prisma/client/runtime/library";
 import { Session } from "next-auth";
 
 export type Link = {
@@ -56,3 +57,15 @@ export type CartItem = {
         additionalPrice: number;
     } [];
 }
+
+export type CartType = {
+    products: CartItem[];
+    totalItems: number;
+    totalPrice: number
+}
+
+export type ActionTypes = {
+    addToCart:(item:CartItem) => void;
+    removeFromCart:(item:CartItem) => void;
+}
+export type CartStore = CartType & ActionTypes
