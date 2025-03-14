@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 type PriceProps = {
@@ -23,7 +22,7 @@ const Price = ({price,  options}:PriceProps) => {
     }
     
     useEffect(() => {
-        setTotal((quantity * (options ? price + options[selected].additionalPrice : price)));
+        setTotal((quantity * (options && options.length>0 ? (price + options[selected].additionalPrice) : price)));
     },[quantity, selected, options, price]);
 
     return (
