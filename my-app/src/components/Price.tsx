@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 type PriceProps = {
     id: string
     price: number
-    options: {
+    options?: {
         title: string
         additionalPrice: number
     }[];
@@ -23,7 +23,7 @@ const Price = ({id, price,  options}:PriceProps) => {
     
     useEffect(() => {
    
-        const updatedPrice = selected>0 && options && options.length>0 ? Number(price) + Number(options[selected].additionalPrice) : Number(price)
+        const updatedPrice = options?.length ? Number(price) + Number(options[selected].additionalPrice) : Number(price)
         setTotal((quantity * updatedPrice));  
     },[quantity, selected, options, price, ]);
 
