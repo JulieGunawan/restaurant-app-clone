@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import MainLayout from "@/layouts/MainLayout";
 import { useCartStore } from "@/utils/store";
@@ -7,6 +7,9 @@ import { useCartStore } from "@/utils/store";
 const CartPage = () =>{
     const {products, totalItems, totalPrice, removeFromCart} = useCartStore();
     
+    useEffect(()=>{
+        useCartStore.persist.rehydrate();
+    })
     return (
         <MainLayout>
             <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]  flex flex-col lg:flex-row text-red-400 md:w-full ">
