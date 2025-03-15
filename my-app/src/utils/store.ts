@@ -8,7 +8,7 @@ const INITIAL_STATE={
     totalPrice: 0
 }
 
-export const useCartStore = create(persist<CartStore>((set) => ({
+export const useCartStore = create(persist<CartStore>((set, get) => ({
     //Initial state
     products:INITIAL_STATE.products,
     totalItems:INITIAL_STATE.totalItems,
@@ -16,11 +16,30 @@ export const useCartStore = create(persist<CartStore>((set) => ({
 
     //ACTIONS
     addToCart(item:CartItem) {
-        set((state) =>({
-            products: [...state.products, item],
-            totalItems: state.totalItems + item.quantity,
-            totalPrice: state.totalPrice + item.price,
-        }))
+        const products = get().products;
+        const productInState = products.find((product) => 
+            (product.id === item.id && product.options===item.options ));
+
+        if (productInState) {
+            const updatedProducts = products.map((product)=>
+                (product.id === productInState.id) ? {
+                    ...item,
+                    options: product.options,
+                    quantity: item.quantity + product.quantity
+                } : item
+            );
+            set((state)=>({
+                products: updatedProducts,
+                totalItems: state.totalItems + item.quantity,
+                totalPrice: state.totalPrice + item.price
+            }))
+        } else {
+            set((state)=>({
+                products:[...state.products,item],
+                totalItems: state.totalItems + item.quantity,
+                totalPrice: state.totalPrice + item.price
+            }))
+        }
     },
     removeFromCart(item: CartItem) {
         set((state)=>({
@@ -28,6 +47,9 @@ export const useCartStore = create(persist<CartStore>((set) => ({
             totalItems:state.totalItems - item.quantity,
             totalPrice: state.totalPrice - item.price
         }));
+    },
+    resetCart(){
+        set(INITIAL_STATE);
     }
 })
 ,{name:"cart", skipHydration: true}));

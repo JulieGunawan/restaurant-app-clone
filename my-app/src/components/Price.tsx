@@ -22,11 +22,11 @@ const Price = ({item}: {item:Product}) => {
     useEffect(()=>{
         useCartStore.persist.rehydrate();
     },[]);
-    
+
     useEffect(() => {
         const updatedPrice = item.options?.length ? Number(item.price) + Number(item.options[selected].additionalPrice) : Number(item.price)
         setTotal((quantity * updatedPrice));  
-    },[quantity, selected, item.options, item.price, ]);
+    },[quantity, selected, item.options, item.price ]);
 
     const handleCart = () => {
         addToCart({

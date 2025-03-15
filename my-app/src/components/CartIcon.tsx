@@ -9,7 +9,7 @@ const CartIcon = () => {
     const {totalItems} = useCartStore();
     useEffect(()=>{
         useCartStore.persist.rehydrate();
-    })
+    },[]);
     return (
         <Link href="/cart" className="flex items-center ">
             <div className="relative h-8 w-8 md:w-5 md:h-5">
