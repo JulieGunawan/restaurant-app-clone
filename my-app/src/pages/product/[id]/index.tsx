@@ -38,7 +38,7 @@ const SingleProductPage = ({singleProduct}:{singleProduct:Product}) => {
                 <div className="flex h-1/2 w-[50%] md:h-[40%] lg:h-[70%] flex-col gap-4 md:justify-center">
                     <h1 className="text-3xl lg:text-5xl font-bold uppercase">{singleProduct.title}</h1>
                     <p className="lg:text-xl">{singleProduct.desc}</p>
-                    <Price price={singleProduct.price} options={singleProduct.options} id={singleProduct.id}/>
+                    <Price item={singleProduct}/>
                 </div>
             </div>
         </MainLayout>

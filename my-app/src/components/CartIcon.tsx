@@ -10,7 +10,7 @@ const CartIcon = () => {
             <div className="relative h-8 w-8 md:w-5 md:h-5">
                 <Image src="/assets/icons8-cart-65.png" alt="" fill/>
             </div>
-            <span>Cart ({totalItems} items)</span>
+            <span>Cart ({totalItems})</span>
         </Link>
     )
 }

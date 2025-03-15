@@ -1,4 +1,3 @@
-import { Action } from "@prisma/client/runtime/library";
 import { Session } from "next-auth";
 
 export type Link = {

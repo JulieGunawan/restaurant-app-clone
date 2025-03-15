@@ -1,14 +1,10 @@
+import { useCartStore } from "@/utils/store";
+import { CartItem } from "@/utils/type";
 import React, { useEffect, useState } from "react";
 
-type PriceProps = {
-    id: string
-    price: number
-    options?: {
-        title: string
-        additionalPrice: number
-    }[];
-}
-const Price = ({id, price,  options}:PriceProps) => {
+
+const Price = (item:CartItem) => {
+    const {addToCart} = useCartStore();
     const [total, setTotal] = useState(price);
     const [quantity, setQuantity] = useState(1);
     const [selected, setSelected] = useState(0);
@@ -22,7 +18,6 @@ const Price = ({id, price,  options}:PriceProps) => {
     }
     
     useEffect(() => {
-   
         const updatedPrice = options?.length ? Number(price) + Number(options[selected].additionalPrice) : Number(price)
         setTotal((quantity * updatedPrice));  
     },[quantity, selected, options, price, ]);
@@ -54,7 +49,10 @@ const Price = ({id, price,  options}:PriceProps) => {
                         <button onClick={() => setQuantity((prev) => Math.min(100,prev + 1))}>{'+'}</button>
                     </div>
                 </div>
-                <button className="p-3 bg-red-500 text-white rounded-md uppercase w-56">Add to Cart</button>
+                <button 
+                    className="p-3 bg-red-500 text-white rounded-md uppercase w-56"
+                    onClick={()=>addToCart()}
+                >Add to Cart</button>
             </div>      
         </div>
     )
