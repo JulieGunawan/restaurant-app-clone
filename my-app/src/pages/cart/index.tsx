@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import MainLayout from "@/layouts/MainLayout";
@@ -41,7 +42,7 @@ const CartPage = () =>{
                     <hr className="my-2" />
                     <div className="flex justify-between">
                         <span className="">TOTAL:</span>
-                        <span className=" font-bold">${subtotal.toFixed(2)}</span>
+                        <span className=" font-bold">${totalPrice.toFixed(2)}</span>
                     </div>
                     <button className="bg-red-500 text-white p-3 rounded-md w-1/2 self-end">Checkout</button>
                 </div>
