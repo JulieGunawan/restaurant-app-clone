@@ -41,7 +41,7 @@ const CategoryPage = () => {
 
     return (
         <MainLayout>
-        <div className="flex flex-wrap text-red-500">
+        <div className="flex flex-wrap text-red-500 ">
             {
                 products.length === 0 ? (
                     <div>No products found in this category</div>

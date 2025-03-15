@@ -21,10 +21,8 @@ const DeleteButton = ({id}:{id:string}) => {
             });  
             if (!res.ok) {
                 throw new Error("Failed to delete the product");
-            }
-            toast.success("The product has been deleted");
+            } 
             router.push("/");
-            return res.json();
         },
         onSuccess: () => {
             queryClient.invalidateQueries({queryKey:["products"]});
@@ -43,7 +41,7 @@ const DeleteButton = ({id}:{id:string}) => {
 
     const handleDelete =(id:string) => {
         mutation.mutate({id});
-        
+        toast.success("The product has been deleted");
     }
     return (
         <button className="bg-white p-3 rounded-md absolute top-4 right-4" onClick={() => handleDelete(id)}>

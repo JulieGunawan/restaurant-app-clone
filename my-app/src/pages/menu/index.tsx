@@ -30,7 +30,7 @@ const MenuPage = () => {
 
     return (
     <MainLayout>
-        <div className = "p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] flex flex-col md:flex-row">
+        <div className = "p-4 md:px-10 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)] flex flex-col md:flex-row">
             {menus.map(menu => (
                 <Link href={`/menu/${menu.slug}`} key={menu.id} className="w-full h-1/4 md:h-1/2 xl:h-full p-8 bg-cover" style={{backgroundImage:`url(${menu.img})`}}>
                     <div className={`text-${menu.color}`}>

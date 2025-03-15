@@ -7,7 +7,7 @@ import CartIcon from "./CartIcon";
 import UserLinks from "./UserLinks";
 const Navbar = () =>{
     return (
-        <div className="h-12 md:h-20 text-red-500 p-4 flex justify-between border-b-2 border-b-red-500 uppercase items-center lg:px-18 xl:px-40">
+        <div className="h-12 md:h-20 text-red-500 py-4 flex justify-between border-b-2 border-b-red-500 uppercase items-center md:px-4 lg:px-15 xl:px-20">
             {/* LEFT LINKS */}
             <div className="hidden md:flex gap-4 flex-1">
                 {links.map((link)=>{
