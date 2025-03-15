@@ -1,3 +1,4 @@
+import { persist } from "zustand/middleware";
 import {  CartItem, CartStore } from "./type";
 import { create } from "zustand";
 
@@ -7,7 +8,7 @@ const INITIAL_STATE={
     totalPrice: 0
 }
 
-export const useCartStore = create<CartStore>((set) => ({
+export const useCartStore = create(persist<CartStore>((set) => ({
     //Initial state
     products:INITIAL_STATE.products,
     totalItems:INITIAL_STATE.totalItems,
@@ -29,4 +30,4 @@ export const useCartStore = create<CartStore>((set) => ({
         }));
     }
 })
-);
+,{name:"cart", skipHydration: true}));
