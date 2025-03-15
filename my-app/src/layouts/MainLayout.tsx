@@ -22,7 +22,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                     <div>
                         <Notification />
                         <Navbar />
-                        <main className="min-h-screen ">
+                        <main className="min-h-screen relative">
                             {children} 
                         </main>
                         <Footer />

@@ -29,8 +29,9 @@ const OrderTables = ({status, session}:OrderStatus ) => {
         queryFn: async () => {
             const response = await fetch("/api/orders");
             if (!response.ok) {
-                const error = await response.json().catch(()=>{});
-                throw new Error(error.message || "Failed to fetch orders");
+                // const error = await response.json().catch(()=>{});
+                const err = error as Error;
+                throw new Error(err.message || "Failed to fetch orders");
             } 
             const data = response.json();
             return data;
