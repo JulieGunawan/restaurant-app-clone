@@ -14,6 +14,18 @@ pnpm dev
 bun dev
 ```
 
+Second, run the postgres docker:
+```bash
+cd my-app/src/docker
+docker compose up
+
+#if you run into issue due to the postgres port is used, run the command below, then run the command above again
+sudo systemctl stop postgresql
+
+Third, run the prisma studio:
+```bash
+npx prisma studio
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
