@@ -66,5 +66,6 @@ export type CartType = {
 export type ActionTypes = {
     addToCart:(item:CartItem) => void;
     removeFromCart:(item:CartItem) => void;
+    resetCart:() => void
 }
 export type CartStore = CartType & ActionTypes
