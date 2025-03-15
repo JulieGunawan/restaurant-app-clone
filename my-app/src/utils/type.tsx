@@ -45,7 +45,7 @@ export type OrderStatus = {
 
 
 export type CartItem = {
-    id: number;
+    id: string;
     img?: string;
     title: string;
     desc?: string;

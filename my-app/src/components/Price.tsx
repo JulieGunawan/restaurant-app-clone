@@ -1,11 +1,13 @@
+"use client";
 import { useCartStore } from "@/utils/store";
-import { CartItem } from "@/utils/type";
+import {  Product } from "@/utils/type";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 
-const Price = (item:CartItem) => {
+const Price = ({item}: {item:Product}) => {
     const {addToCart} = useCartStore();
-    const [total, setTotal] = useState(price);
+    const [total, setTotal] = useState(item.price);
     const [quantity, setQuantity] = useState(1);
     const [selected, setSelected] = useState(0);
 
@@ -18,23 +20,35 @@ const Price = (item:CartItem) => {
     }
     
     useEffect(() => {
-        const updatedPrice = options?.length ? Number(price) + Number(options[selected].additionalPrice) : Number(price)
+        const updatedPrice = item.options?.length ? Number(item.price) + Number(item.options[selected].additionalPrice) : Number(item.price)
         setTotal((quantity * updatedPrice));  
-    },[quantity, selected, options, price, ]);
+    },[quantity, selected, item.options, item.price, ]);
 
+    const handleCart = () => {
+        addToCart({
+            id: item.id,
+            img: item.img,
+            title: item.title,
+            desc: item.desc,
+            price: total,
+            quantity: quantity,
+            options: item.options ? [item.options[selected]] : undefined
+        })
+        toast.success("Product added to the cart");
+    }
     return (
         <div className="flex flex-col gap-4 md:gap-8 lg:gap-10 xl:gap-12">
             <h2 className="text-2xl lg:text-3xl font-bold text-red-500">${total}</h2>      
             <div className="flex gap-4 lg:text-xl">
-                {options?.map((option, index) => (
-                    <button key={`${option.title}-${id}`} className={`ring-1 py-2 px-4 ring-red-700 rounded-md min-w-[6rem]`} 
+                {item.options?.map((option, index) => (
+                    <button key={`${option.title}-${item.id}`} className={`ring-1 py-2 px-4 ring-red-700 rounded-md min-w-[6rem]`} 
                     style={{
                         background: selected === index ? "rgb(248 113 113)" :"white",
                         color: selected === index ? "white" :"rgb(248 113 113)"
                     }}    
                     onClick={() => {
                         setSelected(index);
-                        setTotal(price + option.additionalPrice)
+                        setTotal(item.price + option.additionalPrice)
                     }}>
                         {option.title} 
                     </button>)
@@ -51,7 +65,7 @@ const Price = (item:CartItem) => {
                 </div>
                 <button 
                     className="p-3 bg-red-500 text-white rounded-md uppercase w-56"
-                    onClick={()=>addToCart()}
+                    onClick={()=>handleCart()}
                 >Add to Cart</button>
             </div>      
         </div>

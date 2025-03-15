@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { useCartStore } from "@/utils/store";
+
 
 const CartIcon = () => {
     const {totalItems} = useCartStore();
