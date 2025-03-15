@@ -1,4 +1,4 @@
-import { ActionTypes, CartItem, CartStore, CartType, Product } from "./type";
+import {  CartItem, CartStore } from "./type";
 import { create } from "zustand";
 
 const INITIAL_STATE={
