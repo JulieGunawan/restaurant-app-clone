@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/utils/type';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Featured = () => {
     const [products, setProducts] = useState<Product[]>([]);   
     const [loading, setLoading] = useState(true);
-    // const router = useRouter();
-    // const handleClick = (productId:number) => {
-    //     router.push(`/product/${productId}`);
-    // }
+    const router = useRouter();
+    const handleClick = (productId:string) => {
+        router.push(`/product/${productId}`);
+    }
     useEffect(() => {
        const fetchData = async () => {
         try {
@@ -43,7 +43,7 @@ const Featured = () => {
         <div className="w-screen overflow-x-scroll text-red-500">
             <div className="w-max flex">
                 {products.map(product => (
-                    <div key={product.id} onClick={()=>{}}>
+                    <div key={product.id} onClick={()=>{handleClick(product.id)}}>
                          <div className="w-screen h-[60vh] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]">
                             <div className="relative flex-1 w-full hover:rotate-[60deg] transition-all duration-500" >
                                 <Image src={product.img || '/assets/blankImage.jpg'} alt={product.title} fill className='object-contain'/>
