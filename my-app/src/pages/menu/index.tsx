@@ -7,24 +7,25 @@ import React, { useEffect, useState }  from "react";
 const MenuPage = () => {
     const [menus, setMenus] = useState<Menu[]>([]);
     
+    const fetchData = async () => {
+        try{
+            const res = await fetch('/api/categories',{
+                cache:'no-store'
+            });
+        
+            if(!res.ok){
+                throw new Error('Failed to fetch data');
+            }
+        
+            const data = await res.json();
+            setMenus(data);
+        }
+        catch (err){
+            console.log(err);
+        }
+    };
+    
     useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const res = await fetch('/api/categories',{
-                    cache:'no-store'
-                });
-            
-                if(!res.ok){
-                    throw new Error('Failed to fetch data');
-                }
-            
-                const data = await res.json();
-                setMenus(data);
-            }
-            catch (err){
-                console.log(err);
-            }
-        };
         fetchData();
     },[]);
 

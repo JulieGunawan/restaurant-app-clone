@@ -10,7 +10,7 @@ const CartPage = () =>{
     useEffect(()=>{
         useCartStore.persist.rehydrate();
     },[]);
-    console.log("products: ", products);
+ 
     return (
         <MainLayout>
             <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-15rem)]  flex flex-col lg:flex-row text-red-400 md:w-full ">
