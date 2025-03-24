@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   images:{
     unoptimized: true
   },
+  experimental: {
+    dynamicIO: true
+  },
   trailingSlash:true,
   reactStrictMode: true,
 };
